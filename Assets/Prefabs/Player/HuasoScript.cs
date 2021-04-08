@@ -58,5 +58,26 @@ public class HuasoScript : MonoBehaviour
         {
             jumping = false;
         }
+        if (collision.collider.tag == "Enemy")
+        {
+            StartCoroutine(Hurt());
+        }
+    }
+
+
+    public IEnumerator Hurt()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        yield return new WaitForSeconds(0.4f);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        yield return new WaitForSeconds(0.4f);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        yield return new WaitForSeconds(0.4f);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        yield return new WaitForSeconds(0.4f);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        yield return new WaitForSeconds(0.4f);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        yield return new WaitForSeconds(0.4f);
     }
 }
