@@ -23,19 +23,32 @@ public class HuasoScript : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector3.right * speed);
-        }
+            GetComponent<SpriteRenderer>().flipX = false;
+            transform.position += transform.right * speed * Time.deltaTime;
+        } 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector3.right * -speed);
+            GetComponent<SpriteRenderer>().flipX = true;
+            transform.position -= transform.right * speed * Time.deltaTime;
         }
+
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
         {
             if (!jumping)
             {
-                GetComponent<Rigidbody2D>().AddForce(Vector3.up * speed * 300);
+                GetComponent<Rigidbody2D>().AddForce(Vector3.up * speed * 150);
                 jumping = true;
             }
+        }
+        if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            GetComponent<Animator>().SetBool("Idle", false);
+            GetComponent<Animator>().SetBool("Running", true);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("Idle", true);
+            GetComponent<Animator>().SetBool("Running", false);
         }
     }
 
