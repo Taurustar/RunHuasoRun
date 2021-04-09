@@ -12,16 +12,16 @@ public class EnemyConfigObject : ScriptableObject
 
     };
     [HideInInspector]
-    public bool isMovable;
+    public bool isMovable = false;
     [Tooltip("Set ups the enemy type")]    
-    public ENEMY_TYPE enemyType;
+    public ENEMY_TYPE enemyType = ENEMY_TYPE.STATIC_ENEMY;
     [Tooltip("Damage dealed by the enemy to the player")]
-    public int damage;
+    public int damage = 1;
     [Tooltip("Check if the enemy is destroyed after collision")]
-    public bool destructible;
+    public bool destructible = true;
     [ConditionalHide("isMovable")]
     [Tooltip("Sets up the enemy speed. Only works for Movable Enemies")]
-    public int speed;
+    public int speed = 3;
     [Tooltip("Sets up a sound when this enemy is instantiated in the scene")]
     public AudioClip spawnSound;
 
@@ -35,5 +35,15 @@ public class EnemyConfigObject : ScriptableObject
         {
             isMovable = false;
         }
+    }
+
+    public void ReturnDefaultValues()
+    {
+        isMovable = false;
+        enemyType = ENEMY_TYPE.STATIC_ENEMY;
+        damage = 1;
+        destructible = true;
+        speed = 3;
+        spawnSound = null;
     }
 }
