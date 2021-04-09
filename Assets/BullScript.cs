@@ -11,10 +11,20 @@ public class BullScript : MonoBehaviour
         if (collision.collider.tag == "Player")
         {
             collision.collider.GetComponent<HuasoScript>().health -= configObject.damage;
+            if (collision.collider.GetComponent<HuasoScript>().health <= 0)
+            {
+                collision.collider.GetComponent<HuasoScript>().alive = false;
+                RunHuasoRun.instance.LevelEnd(false);
+            }
             if (configObject.destructible)
             {
                 Destroy(gameObject);
             }
+        }
+
+        if (collision.collider.tag == "Bounds")
+        {          
+            Destroy(gameObject);
         }
     }
 
