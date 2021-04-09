@@ -17,4 +17,5 @@ MonoBehaviour:
   damage: 10
   destructible: 0
   speed: 5
+  thrust: 200
   spawnSound: {fileID: 0}

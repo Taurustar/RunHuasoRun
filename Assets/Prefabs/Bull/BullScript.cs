@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BullScript : MonoBehaviour
 {
-
+    [Tooltip("Configuration Scriptable Object")]
     public EnemyConfigObject configObject;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
         {
-            collision.collider.GetComponent<Rigidbody2D>().AddForce(new Vector2(collision.collider.GetComponent<HuasoScript>().speed * -300 , collision.collider.GetComponent<HuasoScript>().speed * 75));
+            collision.collider.GetComponent<Rigidbody2D>().AddForce(new Vector2(collision.collider.GetComponent<HuasoScript>().speed * -configObject.thrust , collision.collider.GetComponent<HuasoScript>().speed * 50));
             collision.collider.GetComponent<HuasoScript>().health -= configObject.damage;
             if (collision.collider.GetComponent<HuasoScript>().health <= 0)
             {

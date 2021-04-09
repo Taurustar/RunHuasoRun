@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class HuasoScript : MonoBehaviour
 {
-
+    [Tooltip("Configuration Scriptable Object")]
     public PlayerConfigObject configObject;
+    [Tooltip("HP inherited from Scriptable Object")]
     public int health;
+    [Tooltip("Player Speed inherited Scriptable Object")]
     public float speed;
+    [Tooltip("is the player alive?")]
     public bool alive;
+    [Tooltip("is the player jumping?")]
     public bool jumping;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +28,7 @@ public class HuasoScript : MonoBehaviour
     {
         if (alive)
         {
+            //Controls
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
                 GetComponent<SpriteRenderer>().flipX = false;
@@ -60,12 +65,19 @@ public class HuasoScript : MonoBehaviour
     {
         if(collision.collider.tag == "Floor")
         {
-            jumping = false;
+            StartCoroutine(JumpingCoroutine());
         }
         if (collision.collider.tag == "Enemy")
         {
             StartCoroutine(Hurt());
         }
+    }
+
+    public IEnumerator JumpingCoroutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        jumping = false;
+        
     }
 
 

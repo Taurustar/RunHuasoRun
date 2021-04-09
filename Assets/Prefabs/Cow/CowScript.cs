@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CowScript : MonoBehaviour
 {
+    [Tooltip("Configuration Scriptable Object")]
     public EnemyConfigObject configObject;
+    [Tooltip("it's mooing")]
     bool moo;
 
 

@@ -22,6 +22,9 @@ public class EnemyConfigObject : ScriptableObject
     [ConditionalHide("isMovable")]
     [Tooltip("Sets up the enemy speed. Only works for Movable Enemies")]
     public int speed = 3;
+    [ConditionalHide("isMovable")]
+    [Tooltip("Sets up the force used by the enemy to hit the player")]
+    public int thrust = 150;
     [Tooltip("Sets up a sound when this enemy is instantiated in the scene")]
     public AudioClip spawnSound;
 
@@ -45,5 +48,6 @@ public class EnemyConfigObject : ScriptableObject
         destructible = true;
         speed = 3;
         spawnSound = null;
+        thrust = 150;
     }
 }
