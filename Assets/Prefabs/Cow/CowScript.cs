@@ -29,6 +29,7 @@ public class CowScript : MonoBehaviour
             collision.collider.GetComponent<HuasoScript>().health -= configObject.damage;
             if (collision.collider.GetComponent<HuasoScript>().health <= 0)
             {
+                collision.collider.GetComponent<HuasoScript>().health = 0;
                 collision.collider.GetComponent<HuasoScript>().alive = false;
                 RunHuasoRun.instance.LevelEnd(false);
             }
@@ -47,9 +48,9 @@ public class CowScript : MonoBehaviour
             GetComponent<AudioSource>().PlayOneShot(configObject.spawnSound);
         }
     }
-
+    /*
     private void OnTriggerExit2D(Collider2D collision)
     {
         moo = false;
-    }
+    }*/
 }

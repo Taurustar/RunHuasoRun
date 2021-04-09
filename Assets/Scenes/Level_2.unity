@@ -1348,7 +1348,7 @@ GameObject:
   - component: {fileID: 215832977}
   - component: {fileID: 215832976}
   m_Layer: 0
-  m_Name: Level1_Sign
+  m_Name: Level2_Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1393,7 +1393,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 5c9b3954283046044be2e8b7448b0b78, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00e73c1c9df4705489baf7e031ea5e4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2316,8 +2316,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 476257199}
-        m_MethodName: NextLevel
-        m_Mode: 5
+        m_MethodName: EndGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2345,7 +2345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb591e20746f57f49a26a122195bc768, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b451c970bed1c4042835951e5369b8b8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

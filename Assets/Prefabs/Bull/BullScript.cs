@@ -14,6 +14,7 @@ public class BullScript : MonoBehaviour
             collision.collider.GetComponent<HuasoScript>().health -= configObject.damage;
             if (collision.collider.GetComponent<HuasoScript>().health <= 0)
             {
+                collision.collider.GetComponent<HuasoScript>().health = 0;
                 collision.collider.GetComponent<HuasoScript>().alive = false;
                 RunHuasoRun.instance.LevelEnd(false);
             }
@@ -31,6 +32,7 @@ public class BullScript : MonoBehaviour
 
     private void Awake()
     {
+        if(configObject.spawnSound)
         GetComponent<AudioSource>().PlayOneShot(configObject.spawnSound);
     }
 

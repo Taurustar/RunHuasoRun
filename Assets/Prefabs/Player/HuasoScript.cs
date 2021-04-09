@@ -44,8 +44,8 @@ public class HuasoScript : MonoBehaviour
             {
                 if (!jumping)
                 {
-                    GetComponent<Rigidbody2D>().AddForce(Vector3.up * speed * 150);
                     jumping = true;
+                    GetComponent<Rigidbody2D>().AddForce(Vector3.up * speed * 25);                    
                 }
             }
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
@@ -63,13 +63,22 @@ public class HuasoScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Floor")
-        {
-            StartCoroutine(JumpingCoroutine());
-        }
+        
         if (collision.collider.tag == "Enemy")
         {
             StartCoroutine(Hurt());
+        }
+        if (collision.collider.tag == "EndGame")
+        {
+            RunHuasoRun.instance.LevelEnd(true);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Floor")
+        {
+            StartCoroutine(JumpingCoroutine());
         }
     }
 
