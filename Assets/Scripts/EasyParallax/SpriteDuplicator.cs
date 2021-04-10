@@ -62,7 +62,8 @@ namespace EasyParallax
 
 
         private void Update()
-        {
+        {              
+           
             //We need to check if any of our sprites has gone of screen. 
             //We will reposition it to be on the right side if it is
             foreach (var duplicate in duplicatesPool)

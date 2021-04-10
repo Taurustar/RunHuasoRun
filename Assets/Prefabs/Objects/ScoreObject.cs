@@ -6,6 +6,18 @@ public class ScoreObject : MonoBehaviour
 {
     public int score;
 
+    private void Update()
+    {
+        if (RunHuasoRun.instance.endlessLevel)
+        {
+            float difficulty = RunHuasoRun.instance.elapsedTime / 30;
+            if (difficulty < 1) difficulty = 1;
+            if (difficulty > 5) difficulty = 5;
+
+            transform.position -= transform.right * Time.deltaTime * difficulty;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player" && !collision.isTrigger)
@@ -14,6 +26,11 @@ public class ScoreObject : MonoBehaviour
             RunHuasoRun.instance.score += score;
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;            
+        }
+
+        if (collision.tag == "Bounds")
+        {
+            Destroy(gameObject);
         }
     }
 

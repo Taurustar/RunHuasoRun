@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using EasyParallax;
 
+[RequireComponent(
+        typeof(SpriteMovement))] //Make sure we have a SpriteMovement, because we need the speed
 public class DifficultyMultiplier : MonoBehaviour
 {
-
     float originalSpeed;
     private void Start()
     {

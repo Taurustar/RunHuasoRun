@@ -17,12 +17,28 @@ public class ObstacleSpawner : MonoBehaviour
     public float difficulty = 1;
     public float variability;
 
+    public GameObject empanadaPrefab;
+
 
     GameObject far, near;
 
     private void Start()
     {     
-            StartCoroutine(SpawnerCoroutine(0));
+        StartCoroutine(SpawnerCoroutine(0));
+        StartCoroutine(SpawnerEmpanadas());
+    }
+
+    public IEnumerator SpawnerEmpanadas()
+    {
+        if (Random.Range(0, 2) == 1)
+        {
+            GameObject empanada = Instantiate(empanadaPrefab);
+            empanada.transform.position = new Vector2(transform.position.x, transform.position.y + 1.5f);
+        }
+
+        yield return new WaitForSeconds(Random.Range(1.0f, 10.0f));
+
+        StartCoroutine(SpawnerEmpanadas());
     }
 
     public IEnumerator SpawnerCoroutine(int nextObstacleIndex)
@@ -30,14 +46,16 @@ public class ObstacleSpawner : MonoBehaviour
         float frecuency = 10 / difficulty;
         variability = Random.Range(0, frecuency);
 
-
         if(Random.Range(0,2) == 1)
         yield return new WaitForSeconds(frecuency - variability);
         else
             yield return new WaitForSeconds(frecuency + variability);
 
 
-        GameObject instancedEnemy = Instantiate(obstaclesToSpawn[nextObstacleIndex]);
+        
+       
+
+            GameObject instancedEnemy = Instantiate(obstaclesToSpawn[nextObstacleIndex]);
         if (variableLocation)
         {
             instancedEnemy.transform.position = new Vector3(Random.Range(transform.position.x - xMaxLeftOffset, transform.position.x + xMaxRightOffset), transform.position.y, transform.position.z);
