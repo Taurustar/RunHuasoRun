@@ -10,17 +10,20 @@ public class BullScript : MonoBehaviour
     {
         if (collision.collider.tag == "Player")
         {
-            collision.collider.GetComponent<Rigidbody2D>().AddForce(new Vector2(collision.collider.GetComponent<HuasoScript>().speed * -configObject.thrust , collision.collider.GetComponent<HuasoScript>().speed * 50));
-            collision.collider.GetComponent<HuasoScript>().health -= configObject.damage;
-            if (collision.collider.GetComponent<HuasoScript>().health <= 0)
+            if (!collision.collider.GetComponent<HuasoScript>().beignHurt)
             {
-                collision.collider.GetComponent<HuasoScript>().health = 0;
-                collision.collider.GetComponent<HuasoScript>().alive = false;
-                RunHuasoRun.instance.LevelEnd(false);
-            }
-            if (configObject.destructible)
-            {
-                Destroy(gameObject);
+                collision.collider.GetComponent<Rigidbody2D>().AddForce(new Vector2(collision.collider.GetComponent<HuasoScript>().speed * -configObject.thrust, collision.collider.GetComponent<HuasoScript>().speed * 50));
+                collision.collider.GetComponent<HuasoScript>().health -= configObject.damage;
+                if (collision.collider.GetComponent<HuasoScript>().health <= 0)
+                {
+                    collision.collider.GetComponent<HuasoScript>().health = 0;
+                    collision.collider.GetComponent<HuasoScript>().alive = false;
+                    RunHuasoRun.instance.LevelEnd(false);
+                }
+                if (configObject.destructible)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
 
@@ -38,7 +41,19 @@ public class BullScript : MonoBehaviour
 
     private void Update()
     {
-        transform.position -= transform.right * configObject.speed * Time.deltaTime;
+        if(RunHuasoRun.instance.endlessLevel)
+        {
+            float difficulty = Time.timeSinceLevelLoad / 30;
+            if (difficulty < 1) difficulty = 1;
+            if (difficulty > 5) difficulty = 5;
+            transform.position -= transform.right * configObject.speed * Time.deltaTime * (difficulty / 2);
+        }
+        else
+        {
+            transform.position -= transform.right * configObject.speed * Time.deltaTime;
+        }
+        
+        
     }
 
 }

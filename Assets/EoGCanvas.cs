@@ -24,7 +24,9 @@ public class EoGCanvas : MonoBehaviour
         }
         if(timeText)
         {
-            timeText.text = "Your Time: " + RunHuasoRun.instance.elapsedTime.ToString("0");
+            int mins = Mathf.FloorToInt(RunHuasoRun.instance.elapsedTime / 60);
+            int secs = Mathf.FloorToInt(RunHuasoRun.instance.elapsedTime % 60);
+            timeText.text = "Your Time: " + mins.ToString("00") + ":" + secs.ToString("00");
         }
     }
 }

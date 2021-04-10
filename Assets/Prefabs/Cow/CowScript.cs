@@ -19,7 +19,14 @@ public class CowScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (RunHuasoRun.instance.endlessLevel)
+        {
+            float difficulty = RunHuasoRun.instance.elapsedTime / 30;
+            if (difficulty < 1) difficulty = 1;
+            if (difficulty > 5) difficulty = 5;
         
+            transform.position -= transform.right * Time.deltaTime * difficulty;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -37,6 +44,11 @@ public class CowScript : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+
+        if (collision.collider.tag == "Bounds")
+        {
+            Destroy(gameObject);
         }
     }
 

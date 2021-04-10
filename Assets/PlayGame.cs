@@ -11,6 +11,6 @@ public class PlayGame : MonoBehaviour
 
     public void PlayEndlessRunner()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level_Endless", UnityEngine.SceneManagement.LoadSceneMode.Single);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Endless", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 }

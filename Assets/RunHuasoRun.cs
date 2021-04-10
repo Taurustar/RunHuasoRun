@@ -32,8 +32,11 @@ public class RunHuasoRun : MonoBehaviour
 
     private void Update()
     {
-        if(endlessLevel)
-        elapsedTime += Time.deltaTime;
+        if (endlessLevel)
+        {
+            elapsedTime += Time.deltaTime;
+            playerGameObject.transform.position -= playerGameObject.transform.right * Time.deltaTime;
+        }
     }
 
     private void Start()
@@ -47,18 +50,19 @@ public class RunHuasoRun : MonoBehaviour
     //Coroutine for the Endless Runner level
     public IEnumerator AddScoreInTime()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         score += 10;
+        if(playerGameObject.GetComponent<HuasoScript>().alive)
         StartCoroutine(AddScoreInTime());
     }
 
     public void LevelEnd(bool win)
     {
         Destroy(playerGameObject.GetComponent<Rigidbody2D>());
+        Destroy(FindObjectOfType<UIINfo>().gameObject);
         playerGameObject.GetComponent<HuasoScript>().alive = false;
         playerGameObject.GetComponent<Animator>().SetBool("Idle", true);
         playerGameObject.GetComponent<Animator>().SetBool("Running", false);
-        StopCoroutine(AddScoreInTime());
         if(win)
         {
             playerGameObject.GetComponent<Animator>().SetBool("Win", true);

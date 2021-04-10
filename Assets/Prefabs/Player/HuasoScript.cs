@@ -14,6 +14,8 @@ public class HuasoScript : MonoBehaviour
     public bool alive;
     [Tooltip("is the player jumping?")]
     public bool jumping;
+    [Tooltip("checks when the player gets hurt")]
+    public bool beignHurt;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,12 @@ public class HuasoScript : MonoBehaviour
         speed = configObject.speed;
         jumping = false;
         alive = true;
+        beignHurt = false;
+        if (RunHuasoRun.instance.endlessLevel)
+        {
+            GetComponent<Animator>().SetBool("Idle", false);
+            GetComponent<Animator>().SetBool("Running", true);
+        }
     }
 
     // Update is called once per frame
@@ -36,7 +44,8 @@ public class HuasoScript : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
-                GetComponent<SpriteRenderer>().flipX = true;
+                if (!RunHuasoRun.instance.endlessLevel)
+                    GetComponent<SpriteRenderer>().flipX = true;
                 transform.position -= transform.right * speed * Time.deltaTime;
             }
 
@@ -50,13 +59,17 @@ public class HuasoScript : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
+                
                 GetComponent<Animator>().SetBool("Idle", false);
                 GetComponent<Animator>().SetBool("Running", true);
             }
             else
             {
-                GetComponent<Animator>().SetBool("Idle", true);
-                GetComponent<Animator>().SetBool("Running", false);
+                if (!RunHuasoRun.instance.endlessLevel)
+                {
+                    GetComponent<Animator>().SetBool("Idle", true);
+                    GetComponent<Animator>().SetBool("Running", false);
+                }
             }
         }
     }
@@ -92,6 +105,7 @@ public class HuasoScript : MonoBehaviour
 
     public IEnumerator Hurt()
     {
+        beignHurt = true;
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         yield return new WaitForSeconds(0.4f);
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
@@ -104,5 +118,6 @@ public class HuasoScript : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         yield return new WaitForSeconds(0.4f);
+        beignHurt = false;
     }
 }

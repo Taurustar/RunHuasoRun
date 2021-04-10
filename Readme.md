@@ -31,7 +31,7 @@ https://www.spriters-resource.com/snes/kirbydream3/sheet/51099/
 + Empanada Sprite 
 https://www.pinclipart.com/pindetail/ihohxJJ_empanadas-clipart/
 
-+ First Level Music
++ Level Music
 https://freesfx.co.uk
 
 + Main Menu Music
@@ -43,14 +43,14 @@ https://freesfx.co.uk
 + Cow Sound
 https://freesfx.co.uk
 
-+ Wooden Fences
-https://assetstore.unity.com/packages/3d/props/exterior/mobile-wooden-fences-54772
-
 + Main Menu Buttons
 https://eu2.flamingtext.com/net-fu/dynamic.cgi?script=style-logo
 
 + Pixel Art Platformer Village Props
 https://assetstore.unity.com/packages/2d/environments/pixel-art-platformer-village-props-166114
+
++ Easy Parallax
+https://assetstore.unity.com/packages/tools/sprite-management/easy-parallax-168879
 
 
 Controls
