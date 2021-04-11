@@ -3685,6 +3685,24 @@ Transform:
   m_Father: {fileID: 1723168315}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &692123662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+    type: 3}
+  m_PrefabInstance: {fileID: 1435759083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &692123663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692123662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68597971ca48784b9932bfb9653a3b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &720776375
 GameObject:
   m_ObjectHideFlags: 0
@@ -8796,10 +8814,28 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1435759083}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 692123662}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1435759086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2929252285020697097, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+    type: 3}
+  m_PrefabInstance: {fileID: 1435759083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1435759087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435759086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68597971ca48784b9932bfb9653a3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1440439490
@@ -9914,6 +9950,7 @@ GameObject:
   - component: {fileID: 1513984929}
   - component: {fileID: 1513984928}
   - component: {fileID: 1513984930}
+  - component: {fileID: 1513984931}
   m_Layer: 5
   m_Name: JoystickButton
   m_TagString: Untagged
@@ -9990,6 +10027,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressed: 0
+--- !u!114 &1513984931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513984926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68597971ca48784b9932bfb9653a3b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1524620346
 GameObject:
   m_ObjectHideFlags: 0
