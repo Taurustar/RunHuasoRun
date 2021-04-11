@@ -16,6 +16,11 @@ public class HuasoScript : MonoBehaviour
     public bool jumping;
     [Tooltip("checks when the player gets hurt")]
     public bool beignHurt;
+
+    public Joystick joystick;
+    public JoystickButton joystickButton;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +41,8 @@ public class HuasoScript : MonoBehaviour
     {
         if (alive)
         {
+
+#if UNITY_STANDALONE
             //Controls
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
@@ -71,6 +78,49 @@ public class HuasoScript : MonoBehaviour
                     GetComponent<Animator>().SetBool("Running", false);
                 }
             }
+#endif
+
+
+#if UNITY_ANDROID
+            if (joystick.Direction.x > 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+                transform.position += transform.right * speed * Time.deltaTime;
+            }
+            if (joystick.Direction.x < 0)
+            {
+                if (!RunHuasoRun.instance.endlessLevel)
+                    GetComponent<SpriteRenderer>().flipX = true;
+                transform.position -= transform.right * speed * Time.deltaTime;
+            }
+            if(joystickButton.pressed)
+            {
+                if (!jumping)
+                {
+                    jumping = true;
+                    GetComponent<Rigidbody2D>().AddForce(Vector3.up * speed * 25);
+                }
+            }
+
+            //transform.position -= transform.right * speed * Time.deltaTime;
+
+
+            if (joystickButton.pressed || joystick.Direction.x != 0)
+            {
+                
+                GetComponent<Animator>().SetBool("Idle", false);
+                GetComponent<Animator>().SetBool("Running", true);
+            }
+            else
+            {
+                if (!RunHuasoRun.instance.endlessLevel)
+                {
+                    GetComponent<Animator>().SetBool("Idle", true);
+                    GetComponent<Animator>().SetBool("Running", false);
+                }
+            }
+
+#endif
         }
     }
 

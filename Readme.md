@@ -52,6 +52,12 @@ https://assetstore.unity.com/packages/2d/environments/pixel-art-platformer-villa
 + Easy Parallax
 https://assetstore.unity.com/packages/tools/sprite-management/easy-parallax-168879
 
++ Joystick Pack
+https://assetstore.unity.com/packages/tools/input-management/joystick-pack-107631
+
++ Tutorial used for Android controllers
+https://www.youtube.com/watch?v=8-X3BmvtXT0
+
 
 Controls
 **********************
